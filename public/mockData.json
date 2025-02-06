@@ -1,0 +1,24 @@
+{
+  "code": 200,
+  "msg": "请求成功",
+  "data": [
+    {
+      "id": 0,
+      "index": 20,
+      "prizeName": "一等奖",
+      "state": 0
+    },
+    {
+      "id": 1,
+      "index": 100,
+      "prizeName": "二等奖",
+      "state": 0
+    },
+    {
+      "id": 2,
+      "index": 10,
+      "prizeName": "三等奖",
+      "state": 0
+    }
+  ]
+}

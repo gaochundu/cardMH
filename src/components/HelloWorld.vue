@@ -30,8 +30,24 @@
         (每10箱roll一位上组幸运老板赠送奥沙利文签名球杆附带EM官方认证证书次性下单5单及以上老板可累计一个卡位)
       </aside>
     </article>
-    <footer class="mh-footer"></footer>
+    <footer class="mh-footer">
+      <div class="mh-footer-title">
+        <h1>卡位统计</h1>
+      </div>
+      <Simplebar style="width:100%;">
+        <div class="mh-footer-container">
+          <div class="flipped-card"
+               v-for="(flipedCardItem, index) in flipedCardData"
+               :key="flipedCardItem.id">
+            卡牌{{ flipedCardItem?.index }}
+            <br>
+            <span>{{ flipedCardItem.prizeName }}</span>
+          </div>
+        </div>
+      </Simplebar>
+    </footer>
   </div>
+  <!-- 遮罩 -->
   <div class="mask-box"
        v-if="cardName">
     <!-- 二次确认 -->
@@ -83,6 +99,8 @@ const cardName = ref(0)
 const isFlipCard = ref(false)
 const cardData = ref([])
 const currentCardData = ref()
+const flipedCardData = ref([])
+
 const chooseCard = (item) => {
   console.log(item)
   currentCardData.value = item
@@ -108,6 +126,11 @@ const flipCard = () => {
   currentCardData.value.state = 1
   // const card = document.querySelector('.card-box')
   // card.classList.toggle('flipped')
+
+  // 更新已抽卡片
+  flipedCardData.value = cardData.value.filter((item) => {
+    return item.state === 1
+  })
 }
 
 onBeforeMount(() => {
@@ -138,7 +161,8 @@ onMounted(() => {})
     height: 75%;
     display: grid;
     grid-template-columns: 10% 80% 10%;
-    background: #05442d;
+    padding: 0.01rem;
+    background: rgba(255, 255, 255, 0.082);
     &-left {
       color: #fff;
       font-size: 0.35rem;
@@ -154,7 +178,42 @@ onMounted(() => {})
   }
   .mh-footer {
     height: 15%;
-    // background: #d6bc27;
+    display: grid;
+    grid-template-columns: 5% 95%;
+    &-title {
+      writing-mode: vertical-lr;
+      background: rgba(0, 0, 0, 0.411);
+      border-right: 0.03rem dashed #ffffff73;
+      color: #fff;
+      font-size: 0.15rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &-container {
+      display: inline-flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: row;
+      .flipped-card {
+        user-select: none;
+        box-sizing: border-box;
+        margin: 0 0.1rem;
+        font-size: 0.16rem;
+        color: white; /* 文字颜色 */
+        width: 1rem;
+        height: 1.5rem;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        // border: 1px solid #ccc;
+        border-radius: 0.1rem;
+        box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+        background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
+      }
+    }
   }
 }
 

@@ -6,28 +6,64 @@
       <h1 class="mh-title">
         <p>{{ titleName }}</p>
       </h1>
+      <div class="mh-tap">
+        <button class="mh-tap-btn"
+                :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
+                @click="changeTap(1)">
+          全部卡牌 【{{cardData.length}}】
+        </button>
+        <button class="mh-tap-btn"
+                :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
+                @click="changeTap(2)">
+          已选卡牌 【{{ flipedCardData.length }}】
+        </button>
+        <button class="mh-tap-btn"
+                :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
+                @click="changeTap(3)">
+          剩余卡牌 【{{ remainingCardData.length }}】
+        </button>
+      </div>
     </header>
     <article class="mh-article">
       <aside class="mh-article-left">
-        箱配介绍
-        <br>
-        一箱30盒，出场箱配1个SSS评级卡，HP值高达6000！此外还含有SS S A多等级卡牌！组队完毕后随机roll卡位！组齐即默认此箱全部拆开不退不换
+        <h1>箱配介绍</h1>
+        <b>
+          一箱30盒，出场箱配1个SSS评级卡，HP值高达6000！此外还含有SS S A多等级卡牌！组队完毕后随机roll卡位！组齐即默认此箱全部拆开不退不换
+        </b>
       </aside>
       <div style="height:100%; overflow: auto;">
         <Simplebar style="height:100%;">
-          <div class="card-container">
+          <div class="card-container"
+               v-show="tapId === 1">
             <div :class="['card', cardItem?.state ? 'isFlip' : '']"
                  @click="chooseCard(cardItem)"
                  v-for="(cardItem, index) in cardData"
                  :key="cardItem.id">卡牌{{ cardItem?.index }}
             </div>
           </div>
+          <div class="card-container"
+               v-show="tapId === 3">
+            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
+                 @click="chooseCard(cardItem)"
+                 v-for="(cardItem, index) in remainingCardData"
+                 :key="cardItem.id">卡牌{{ cardItem?.index }}
+            </div>
+          </div>
+          <div class="card-container"
+               v-show="tapId === 2">
+            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
+                 @click="chooseCard(cardItem)"
+                 v-for="(cardItem, index) in flipedCardData"
+                 :key="cardItem.id">卡牌{{ cardItem?.index }}
+            </div>
+          </div>
         </Simplebar>
       </div>
       <aside class="mh-article-right">
-        概率详情
-        <br>
-        (每10箱roll一位上组幸运老板赠送奥沙利文签名球杆附带EM官方认证证书次性下单5单及以上老板可累计一个卡位)
+        <h1>概率详情</h1>
+        <b>
+          (每10箱roll一位上组幸运老板赠送奥沙利文签名球杆附带EM官方认证证书次性下单5单及以上老板可累计一个卡位)
+        </b>
       </aside>
     </article>
     <footer class="mh-footer">
@@ -45,6 +81,10 @@
           </div>
         </div>
       </Simplebar>
+      <div class="mh-footer-ph">
+        <h1>PH 值</h1>
+        <h1>100</h1>
+      </div>
     </footer>
   </div>
   <!-- 遮罩 -->
@@ -97,9 +137,12 @@ defineProps<{
 const titleName = ref('所见即所得，好运不打折')
 const cardName = ref(0)
 const isFlipCard = ref(false)
-const cardData = ref([])
-const currentCardData = ref()
-const flipedCardData = ref([])
+const cardData = ref([]) // 全部卡片
+const flipedCardData = ref([]) // 已抽卡片
+const remainingCardData = ref([]) // 剩余卡片
+
+const currentCardData = ref() // 当前卡片
+const tapId = ref(1)
 
 const chooseCard = (item) => {
   console.log(item)
@@ -131,12 +174,32 @@ const flipCard = () => {
   flipedCardData.value = cardData.value.filter((item) => {
     return item.state === 1
   })
+
+  remainingCardData.value = cardData.value.filter((item) => {
+    return item.state === 0
+  })
+}
+const changeTap = (id) => {
+  console.log(id)
+  tapId.value = id
+  switch (id) {
+    case 1:
+      break
+    case 2:
+      break
+    case 3:
+      break
+
+    default:
+      break
+  }
 }
 
 onBeforeMount(() => {
   const g = getCardData(1).then((res) => {
     console.log(res)
     cardData.value = res
+    remainingCardData.value = cardData.value
   })
 })
 
@@ -152,13 +215,35 @@ onMounted(() => {})
   height: 100vh;
   overflow: hidden;
   .mh-header {
-    height: 10%;
+    height: 15%;
     padding: 0.2rem;
     /* background-color: red; */
     border-bottom: 0.01rem dashed #9e9d9dd2;
+    .mh-title {
+      font-size: 0.5rem;
+      text-align: center;
+      color: #fff;
+      letter-spacing: 0.05rem;
+    }
+    .mh-tap {
+      text-align: center;
+      &-btn {
+        border: none;
+        cursor: pointer;
+        border-radius: 0.05rem;
+        padding: 0.05rem 0.2rem;
+        margin: 0.2rem 1rem;
+        color: #fff;
+        font-size: 0.25rem;
+        background-color: #000201;
+        &:hover {
+          background-color: #069469;
+        }
+      }
+    }
   }
   .mh-article {
-    height: 75%;
+    height: 70%;
     display: grid;
     grid-template-columns: 10% 80% 10%;
     padding: 0.01rem;
@@ -168,18 +253,28 @@ onMounted(() => {})
       font-size: 0.35rem;
       box-shadow: inset 0px 0px 23px rgba(0, 0, 0, 0.3);
       // background: #56ec38;
+      text-align: center;
+      b {
+        word-wrap: break-all;
+        text-align: left;
+      }
     }
     &-right {
       color: #fff;
       font-size: 0.35rem;
       box-shadow: inset 0px 0px 23px rgba(0, 0, 0, 0.3);
       // background: #2624a7;
+      text-align: center;
+      b {
+        word-wrap: break-all;
+        text-align: left;
+      }
     }
   }
   .mh-footer {
     height: 15%;
     display: grid;
-    grid-template-columns: 5% 95%;
+    grid-template-columns: 5% 90% 5%;
     &-title {
       writing-mode: vertical-lr;
       background: rgba(0, 0, 0, 0.411);
@@ -192,9 +287,12 @@ onMounted(() => {})
     }
     &-container {
       display: inline-flex;
-      justify-content: start;
+      // justify-content: start;
       align-items: center;
       flex-direction: row;
+      display: inline-flex;
+      justify-content: center;
+      width: 100%;
       .flipped-card {
         user-select: none;
         box-sizing: border-box;
@@ -214,14 +312,17 @@ onMounted(() => {})
         background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
       }
     }
+    &-ph {
+      background: rgba(0, 0, 0, 0.411);
+      border-left: 0.03rem dashed #ffffff73;
+      color: #fff;
+      font-size: 0.15rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
-}
-
-.mh-title {
-  font-size: 0.5rem;
-  text-align: center;
-  color: #fff;
-  letter-spacing: 0.05rem;
 }
 
 .card-container {

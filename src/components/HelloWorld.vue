@@ -206,6 +206,10 @@ const closeBox = () => {
 }
 
 const flipCard = () => {
+  if (currentCardData.value.state) {
+    return
+  }
+  
   currentCardData.value.state = 1
   // const card = document.querySelector('.card-box')
   // card.classList.toggle('flipped')

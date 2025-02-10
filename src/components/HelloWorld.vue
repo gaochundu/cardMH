@@ -5,82 +5,126 @@
     <header class="mh-header">
       <h1 class="mh-title">
         <p>{{ titleName }}</p>
+        <p>所见即所得，开什么发什么！</p>
       </h1>
-      <!-- <div class="mh-tap">
-        <button class="mh-tap-btn"
-                :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
-                @click="changeTap(1)">
-          全部卡牌 【{{cardData.length}}】
-        </button>
-        <button class="mh-tap-btn"
-                :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
-                @click="changeTap(2)">
-          已选卡牌 【{{ flipedCardData.length }}】
-        </button>
-        <button class="mh-tap-btn"
-                :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
-                @click="changeTap(3)">
-          剩余卡牌 【{{ remainingCardData.length }}】
-        </button>
-      </div> -->
     </header>
     <article class="mh-article">
       <aside class="mh-article-left">
-        <h1>箱配介绍</h1>
+        <h1>配比介绍</h1>
         <h5>
-          每场次配备300张，每场配1个SSS评级卡，HP值高达6000！此外还含有SS,S,
+          每场次配备300张,每场配1个SSS评级卡,HP值高达6000！此外还含有SS,S,
           A,B,C,D,E多等级卡牌！下单随机选拆!
         </h5>
-        <h6>sss卡（1%）</h6>
+        <div class="left-table">
+          <div class="title">卡位出率</div>
+          <ul>
+            <li>
+              <div>
+                <p>SSS</p>
+                <p>1%</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p>SS</p>
+                <p>2%</p>
+              </div>
+              <div>
+                <p>S</p>
+                <p>2%</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p>A</p>
+                <p>2%</p>
+              </div>
+              <div>
+                <p>B</p>
+                <p>2%</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p>C</p>
+                <p>2%</p>
+              </div>
+              <div>
+                <p>D</p>
+                <p>2%</p>
+              </div>
+            </li>
+            <li>
+              <div>
+                <p>E</p>
+                <p>2%</p>
+              </div>
+              <div>
+                <p>F</p>
+                <p>2%</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- <h6>sss卡（1%）</h6>
         <h6>ss卡（1%）</h6>
         <h6>s卡（1%）</h6>
-        <h6>A卡（1%）</h6>
+        <h6>A卡（1%）</h6> -->
       </aside>
       <div style="height: 100%; overflow: auto">
         <div class="mh-tap">
           <div class="btnBox">
-            <button class="mh-tap-btn"
-                    :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
-                    @click="changeTap(1)">
-              全部卡牌 【{{ cardData.length }}】
+            <button
+              class="mh-tap-btn"
+              :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
+              @click="changeTap(1)"
+            >
+              全部卡池 【 {{ cardData.length }} 】
             </button>
-            <button class="mh-tap-btn"
-                    :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
-                    @click="changeTap(2)">
-              已选卡牌 【{{ flipedCardData.length }}】
+            <button
+              class="mh-tap-btn"
+              :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
+              @click="changeTap(2)"
+            >
+              已选卡池 【 {{ flipedCardData.length }} 】
             </button>
-            <button class="mh-tap-btn"
-                    :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
-                    @click="changeTap(3)">
-              剩余卡牌 【{{ remainingCardData.length }}】
+            <button
+              class="mh-tap-btn"
+              :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
+              @click="changeTap(3)"
+            >
+              剩余卡池 【 {{ remainingCardData.length }} 】
             </button>
           </div>
         </div>
         <Simplebar class="center">
-          <div class="card-container"
-               v-show="tapId === 1">
-            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
-                 @click="chooseCard(cardItem)"
-                 v-for="(cardItem, index) in cardData"
-                 :key="cardItem.id">
+          <div class="card-container" v-show="tapId === 1">
+            <div
+              :class="['card', cardItem?.state ? 'isFlip' : '']"
+              @click="chooseCard(cardItem)"
+              v-for="(cardItem, index) in cardData"
+              :key="cardItem.id"
+            >
               卡牌{{ cardItem?.index }}
             </div>
           </div>
-          <div class="card-container"
-               v-show="tapId === 3">
-            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
-                 @click="chooseCard(cardItem)"
-                 v-for="(cardItem, index) in remainingCardData"
-                 :key="cardItem.id">
+          <div class="card-container" v-show="tapId === 3">
+            <div
+              :class="['card', cardItem?.state ? 'isFlip' : '']"
+              @click="chooseCard(cardItem)"
+              v-for="(cardItem, index) in remainingCardData"
+              :key="cardItem.id"
+            >
               卡牌{{ cardItem?.index }}
             </div>
           </div>
-          <div class="card-container"
-               v-show="tapId === 2">
-            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
-                 @click="chooseCard(cardItem)"
-                 v-for="(cardItem, index) in flipedCardData"
-                 :key="cardItem.id">
+          <div class="card-container" v-show="tapId === 2">
+            <div
+              :class="['card', cardItem?.state ? 'isFlip' : '']"
+              @click="chooseCard(cardItem)"
+              v-for="(cardItem, index) in flipedCardData"
+              :key="cardItem.id"
+            >
               卡牌{{ cardItem?.index }}
             </div>
           </div>
@@ -100,14 +144,16 @@
     </article>
     <footer class="mh-footer">
       <div class="mh-footer-title">
-        <h1>卡位统计</h1>
+        <h1>当前卡池</h1>
         <div @click="cleanUp">清空</div>
       </div>
       <center style="width: 100%">
         <div class="mh-footer-container">
-          <div class="flipped-card"
-               v-for="(flipedCardItem, index) in currentFlipedCardData"
-               :key="flipedCardItem.id">
+          <div
+            class="flipped-card"
+            v-for="(flipedCardItem, index) in currentFlipedCardData"
+            :key="flipedCardItem.id"
+          >
             <span> 卡牌{{ flipedCardItem?.index }} </span>
             <span>{{ flipedCardItem.prizeName }}</span>
             <span style="color: red"> 100PH值 </span>
@@ -115,45 +161,47 @@
         </div>
       </center>
       <div class="mh-footer-ph">
-        <h1>合计PH值</h1>
-        <h1>【100】</h1>
+        <h1>
+          合计<b>【{{currentFlipedCardData.length}}】</b>张
+        </h1>
+        <h1>
+          PH值<b>【100】</b>分
+        </h1>
       </div>
     </footer>
   </div>
   <!-- 遮罩 -->
-  <div class="mask-box"
-       v-if="cardName">
+  <div class="mask-box" v-if="cardName">
     <!-- 二次确认 -->
-    <div class="mask-box-content"
-         v-if="!isFlipCard">
+    <div class="mask-box-content" v-if="!isFlipCard">
       <h1>
-        是否打开<span class="card-number">&nbsp;{{ cardName }}号&nbsp;</span>卡牌
+        是否打开 <span class="card-number">{{ cardName }}号</span> 卡牌
       </h1>
       <div class="mask-box-content-btn">
-        <span class="btn-confirm"
-              @click="onConfirm">确认</span>
+        <span class="btn-confirm" @click="onConfirm">确认</span>
         &emsp;
-        <span class="btn-cancel"
-              @click="onCancel">取消</span>
+        <span class="btn-cancel" @click="onCancel">取消</span>
       </div>
     </div>
     <!-- 翻牌 -->
-    <div class="card-box"
-         v-if="isFlipCard"
-         @click.stop="flipCard()">
+    <div class="card-box" v-if="isFlipCard" @click.stop="flipCard()">
       <div class="centerBox">
-        <div class="close-btn"
-             @click.stop="closeBox">×</div>
+        <div class="close-btn" @click.stop="closeBox">×</div>
         <div class="title">光感台球器材评分收藏卡</div>
         <div :class="['card-inner', currentCardData?.state ? 'flipped' : '']">
           <div class="card-front">
             <!-- <img src="@/assets/imgs/front.png"
                alt="Card Back"> -->
-            <b class="card-front-number">{{ currentCardData?.index }}号</b>
+            <p class="card-front-number">{{ currentCardData?.index }}号</p>
+            <p class="card-front-number">请翻开卡片</p>
           </div>
           <div class="card-back">
             <!-- <img src="./assets/imgs/back.png" alt="Card Front"> -->
             <p class="card-front-number">{{ currentCardData?.prizeName }}</p>
+            <div class="imgBox">
+              <img src="../assets/imgs/back.png" alt="" />
+            </div>
+            <p class="card-front-number">PH值->200</p>
             <p class="card-front-number">sss级</p>
             <p class="card-front-number">野豹G5</p>
           </div>
@@ -174,7 +222,7 @@ defineProps<{
   msg: string
 }>()
 
-const titleName = ref('所见即所得，好运不打折')
+const titleName = ref('光感台球器材评级卡直播间')
 const cardName = ref(0)
 const isFlipCard = ref(false)
 const cardData = ref([]) // 全部卡片
@@ -209,7 +257,6 @@ const flipCard = () => {
   if (currentCardData.value.state) {
     return
   }
-  
   currentCardData.value.state = 1
   // const card = document.querySelector('.card-box')
   // card.classList.toggle('flipped')
@@ -269,10 +316,17 @@ onMounted(() => {})
     /* background-color: red; */
     border-bottom: 0.01rem dashed #9e9d9dd2;
     .mh-title {
-      font-size: 0.5rem;
+      font-size: 0.6rem;
       text-align: center;
-      color: #fff;
+      color: #000000;
       letter-spacing: 0.05rem;
+      font-family: 'YunFengFeiYunTi' !important;
+      p {
+        &:nth-of-type(2) {
+          font-size: 0.4rem;
+          color: #9a0101;
+        }
+      }
     }
   }
   .mh-article {
@@ -297,11 +351,11 @@ onMounted(() => {})
         button {
           border: none;
           cursor: pointer;
-          border-radius: 0.05rem;
-          padding: 0.05rem 0.2rem;
+          border-radius: 0.03rem;
+          padding: 0.1rem 0.25rem;
           margin: 0 1rem;
           color: #fff;
-          font-size: 0.25rem;
+          font-size: 0.2rem;
           background-color: #000201;
           &:hover {
             background-color: #069469;
@@ -337,20 +391,59 @@ onMounted(() => {})
       box-shadow: inset 0px 0px 23px rgba(0, 0, 0, 0.3);
       // background: #56ec38;
       text-align: center;
-      b {
+      padding-top: 0.1rem;
+      h1 {
+        color: #000000;
+        font-size: 0.35rem;
+        // font-weight: bolder;
+        font-family: 'YunFengFeiYunTi';
+      }
+      h5 {
         word-wrap: break-all;
         text-align: left;
+        //  color: #d6ba2a;
+        font-weight: bolder;
+        line-height: 2;
+        //  font-family: "YunFengFeiYunTi";
+      }
+      .left-table {
+        margin: 0.1rem;
+        .title {
+          background: #fff;
+          font-weight: bold;
+          color: #000;
+        }
+        ul {
+          li {
+            display: flex;
+            justify-content: space-around;
+            border: 1px solid #fff;
+            div {
+              width: 50%;
+              font-size: 0.25rem;
+              font-family: 'NSimSun';
+              &:nth-of-type(2) {
+                border-left: 1px solid #ffffff;
+              }
+            }
+          }
+        }
       }
     }
     &-right {
+      padding-top: 0.1rem;
       color: #fff;
       font-size: 0.35rem;
       box-shadow: inset 0px 0px 23px rgba(0, 0, 0, 0.3);
       // background: #2624a7;
       text-align: center;
-      b {
-        word-wrap: break-all;
-        text-align: left;
+      h1 {
+        color: #000000;
+        // font-weight: bolder;
+        font-family: 'YunFengFeiYunTi';
+      }
+      h6{
+        line-height: 2.0;
       }
     }
   }
@@ -369,6 +462,11 @@ onMounted(() => {})
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      h1{
+         font-family: 'YunFengFeiYunTi';
+        //  color: #000000;
+         margin-bottom: 0.5rem;
+      }
       div {
         cursor: pointer;
         padding: 0.1rem 0.3rem;
@@ -400,8 +498,14 @@ onMounted(() => {})
         flex-direction: column;
         // border: 1px solid #ccc;
         border-radius: 0.1rem;
-        box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-        background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
+        background: url(/src/assets/imgs/1.png) no-repeat center center;
+        // box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+        // background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
+        span {
+          font-size: 0.2rem;
+          margin: 0.04rem 0;
+          font-weight: bold;
+        }
       }
     }
     &-ph {
@@ -409,15 +513,22 @@ onMounted(() => {})
       border-left: 0.03rem dashed #ffffff73;
       color: #fff;
       font-size: 0.15rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      text-align: center;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // flex-direction: column;
       h1 {
+        // text-align: left;
+        font-weight: bold;
         font-size: 0.2rem;
-        &:nth-of-type(2) {
+        margin: 0.3rem 0.1rem;
+        b{
           font-size: 0.3rem;
-          color: red;
+          color: #9a0101;
+        }
+        &:nth-of-type(2) {
+          
         }
       }
     }
@@ -445,8 +556,10 @@ onMounted(() => {})
   justify-content: center;
   // border: 1px solid #ccc;
   border-radius: 0.1rem;
-  box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
-  background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
+  background: url(/src/assets/imgs/2.png) no-repeat center center;
+  // background-image: "../../src/assets/imgs/2.png";
+  // box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
+  // background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
 
   // position: absolute;
   /* 卡片绝对定位 */
@@ -455,7 +568,8 @@ onMounted(() => {})
 }
 
 .isFlip {
-  filter: grayscale(0.8);
+  //
+  filter: grayscale(0.1);
   pointer-events: none;
 }
 
@@ -512,14 +626,15 @@ onMounted(() => {})
     transform: translate(-50%, -50%);
     width: 4rem;
     height: 6rem;
-    border: 2px solid hsl(194, 100%, 50%);
-
-    // perspective: 1000px;
+    border: 2px solid hsl(207, 96%, 50%);
+    border-radius: 0.1rem;
     .centerBox {
       width: 100%;
       height: 100%;
+
       .title {
         height: 0.5rem;
+        font-weight: bold;
         text-align: center;
         line-height: 0.5rem;
         background: hsla(194, 100%, 50%, 0.315);
@@ -549,7 +664,6 @@ onMounted(() => {})
           width: 100%;
           height: 100%;
           position: absolute;
-
           backface-visibility: hidden;
           // display: flex;
           justify-items: center;
@@ -562,26 +676,42 @@ onMounted(() => {})
             border-radius: 10px;
           }
         }
+        .card-front {
+          p {
+            display: inline-block;
+          }
+        }
 
         .card-front {
           display: flex;
           justify-content: center;
-          background-color: #fff;
-          background: url('@/assets/imgs/b.jpg') no-repeat center;
+          // background-color: #fff;
+          background: url(/src/assets/imgs/1.png) no-repeat center center;
+
+          // background: url('@/assets/imgs/b.jpg') no-repeat center;
           background-size: 100% 100%;
+
           &-number {
-            margin-top: 0.7rem;
+            // margin-top: 0.4rem;
             font-size: 0.5rem;
             color: #fff;
           }
         }
 
         .card-back {
+          width: 100%;
+          text-align: center;
           // background: url('@/assets/imgs/f.jpg') no-repeat center;
           background: #186143;
           background-size: 100% 100%;
           // background-image: radial-gradient(circle at center, #186143 0%, #0e543c 100%);
           transform: rotateY(180deg);
+          .imgBox {
+            width: 100%;
+            height: 50%;
+            // background: url('../assets/imgs/back.png') no-repeat center center;
+            // background: #069469;
+          }
         }
       }
     }

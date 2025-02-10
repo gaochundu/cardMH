@@ -1,0 +1,7 @@
+/* 引入字体库 */
+@font-face {
+  font-family: 'YunFengFeiYunTi';
+  src: url('./fonts/YunFengFeiYunTi/YunFengFeiYunTi-2.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}

@@ -1,4 +1,6 @@
 @import './base.css';
+@import './fonts.css';
+
 
 /* a,
 .green {
@@ -18,11 +20,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 body {
   -webkit-overflow-scrolling: touch;
   font-size: 0.16rem;
+  font-family: 'SimSun';
 }
 
 html {

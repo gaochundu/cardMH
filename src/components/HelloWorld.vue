@@ -5,15 +5,25 @@
     <header class="mh-header">
       <h1 class="mh-title">
         <p>{{ titleName }}</p>
-        <p>所见即所得，开什么发什么！</p>
+        <p>
+          所
+          <b>见</b>
+          即所
+          <b>得</b>
+          ，
+          <b>开</b>
+          啥
+          <b>发</b>
+          啥！
+        </p>
       </h1>
     </header>
     <article class="mh-article">
       <aside class="mh-article-left">
         <h1>配比介绍</h1>
         <h5>
-          每场次配备300张,每场配1个SSS评级卡,HP值高达6000！此外还含有SS,S,
-          A,B,C,D,E多等级卡牌！下单随机选拆!
+          每场次配备300张,每场配1个SSS评级卡,HP值高达6000！
+          此外还含有SS,S,A,B,C,D,E多等级卡牌！下单随机选拆!
         </h5>
         <div class="left-table">
           <div class="title">卡位出率</div>
@@ -74,57 +84,48 @@
       <div style="height: 100%; overflow: auto">
         <div class="mh-tap">
           <div class="btnBox">
-            <button
-              class="mh-tap-btn"
-              :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
-              @click="changeTap(1)"
-            >
+            <button class="mh-tap-btn"
+                    :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
+                    @click="changeTap(1)">
               全部卡池 【 {{ cardData.length }} 】
             </button>
-            <button
-              class="mh-tap-btn"
-              :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
-              @click="changeTap(2)"
-            >
+            <button class="mh-tap-btn"
+                    :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
+                    @click="changeTap(2)">
               已选卡池 【 {{ flipedCardData.length }} 】
             </button>
-            <button
-              class="mh-tap-btn"
-              :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
-              @click="changeTap(3)"
-            >
+            <button class="mh-tap-btn"
+                    :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
+                    @click="changeTap(3)">
               剩余卡池 【 {{ remainingCardData.length }} 】
             </button>
           </div>
         </div>
         <Simplebar class="center">
-          <div class="card-container" v-show="tapId === 1">
-            <div
-              :class="['card', cardItem?.state ? 'isFlip' : '']"
-              @click="chooseCard(cardItem)"
-              v-for="(cardItem, index) in cardData"
-              :key="cardItem.id"
-            >
+          <div class="card-container"
+               v-show="tapId === 1">
+            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
+                 @click="chooseCard(cardItem)"
+                 v-for="(cardItem, index) in cardData"
+                 :key="cardItem.id">
               卡牌{{ cardItem?.index }}
             </div>
           </div>
-          <div class="card-container" v-show="tapId === 3">
-            <div
-              :class="['card', cardItem?.state ? 'isFlip' : '']"
-              @click="chooseCard(cardItem)"
-              v-for="(cardItem, index) in remainingCardData"
-              :key="cardItem.id"
-            >
+          <div class="card-container"
+               v-show="tapId === 3">
+            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
+                 @click="chooseCard(cardItem)"
+                 v-for="(cardItem, index) in remainingCardData"
+                 :key="cardItem.id">
               卡牌{{ cardItem?.index }}
             </div>
           </div>
-          <div class="card-container" v-show="tapId === 2">
-            <div
-              :class="['card', cardItem?.state ? 'isFlip' : '']"
-              @click="chooseCard(cardItem)"
-              v-for="(cardItem, index) in flipedCardData"
-              :key="cardItem.id"
-            >
+          <div class="card-container"
+               v-show="tapId === 2">
+            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
+                 @click="chooseCard(cardItem)"
+                 v-for="(cardItem, index) in flipedCardData"
+                 :key="cardItem.id">
               卡牌{{ cardItem?.index }}
             </div>
           </div>
@@ -132,14 +133,127 @@
       </div>
       <aside class="mh-article-right">
         <h1>器材安排</h1>
-        <h6>sss级--野豹G5*3</h6>
+        <div>
+          <table>
+            <tr>
+              <th rowspan="1">SSS级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <th rowspan="2">SS级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <th rowspan="2">S级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <th rowspan="3">A级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <th rowspan="3">B级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <th rowspan="3">C级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <th rowspan="2">D级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+
+            <tr>
+              <th rowspan="3">F级</th>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+            <tr>
+              <td>野豹G2</td>
+            </tr>
+          </table>
+        </div>
+        <!-- <ul>
+
+          <li>
+            <div>
+              ss
+
+            </div>
+            <div>
+              <p>S</p>
+              <p>2%</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p>A</p>
+              <p>2%</p>
+            </div>
+            <div>
+              <p>B</p>
+              <p>2%</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p>C</p>
+              <p>2%</p>
+            </div>
+            <div>
+              <p>D</p>
+              <p>2%</p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <p>E</p>
+              <p>2%</p>
+            </div>
+            <div>
+              <p>F</p>
+              <p>2%</p>
+            </div>
+          </li>
+        </ul> -->
+        <!-- <h6>sss级--野豹G5*3</h6>
         <h6>ss级--天宫墨子*3</h6>
         <h6>s级--南匠致远*3</h6>
         <h6>A级--南匠致远*3</h6>
         <h6>B级--南匠致远*3</h6>
         <h6>c级--南匠致远*3</h6>
         <h6>D级--南匠致远*3</h6>
-        <h6>E级--南匠致远*3</h6>
+        <h6>E级--南匠致远*3</h6> -->
       </aside>
     </article>
     <footer class="mh-footer">
@@ -149,11 +263,9 @@
       </div>
       <center style="width: 100%">
         <div class="mh-footer-container">
-          <div
-            class="flipped-card"
-            v-for="(flipedCardItem, index) in currentFlipedCardData"
-            :key="flipedCardItem.id"
-          >
+          <div class="flipped-card"
+               v-for="(flipedCardItem, index) in currentFlipedCardData"
+               :key="flipedCardItem.id">
             <span> 卡牌{{ flipedCardItem?.index }} </span>
             <span>{{ flipedCardItem.prizeName }}</span>
             <span style="color: red"> 100PH值 </span>
@@ -162,31 +274,36 @@
       </center>
       <div class="mh-footer-ph">
         <h1>
-          合计<b>【{{currentFlipedCardData.length}}】</b>张
+          合计【 <b>{{ currentFlipedCardData.length }}</b> 】张
         </h1>
-        <h1>
-          PH值<b>【100】</b>分
-        </h1>
+        <h1>PH值【<b>100</b>】分</h1>
       </div>
     </footer>
   </div>
   <!-- 遮罩 -->
-  <div class="mask-box" v-if="cardName">
+  <div class="mask-box"
+       v-if="cardName">
     <!-- 二次确认 -->
-    <div class="mask-box-content" v-if="!isFlipCard">
+    <div class="mask-box-content"
+         v-if="!isFlipCard">
       <h1>
         是否打开 <span class="card-number">{{ cardName }}号</span> 卡牌
       </h1>
       <div class="mask-box-content-btn">
-        <span class="btn-confirm" @click="onConfirm">确认</span>
+        <span class="btn-confirm"
+              @click="onConfirm">确认</span>
         &emsp;
-        <span class="btn-cancel" @click="onCancel">取消</span>
+        <span class="btn-cancel"
+              @click="onCancel">取消</span>
       </div>
     </div>
     <!-- 翻牌 -->
-    <div class="card-box" v-if="isFlipCard" @click.stop="flipCard()">
+    <div class="card-box"
+         v-if="isFlipCard"
+         @click.stop="flipCard()">
       <div class="centerBox">
-        <div class="close-btn" @click.stop="closeBox">×</div>
+        <div class="close-btn"
+             @click.stop="closeBox">×</div>
         <div class="title">光感台球器材评分收藏卡</div>
         <div :class="['card-inner', currentCardData?.state ? 'flipped' : '']">
           <div class="card-front">
@@ -199,7 +316,8 @@
             <!-- <img src="./assets/imgs/back.png" alt="Card Front"> -->
             <p class="card-front-number">{{ currentCardData?.prizeName }}</p>
             <div class="imgBox">
-              <img src="../assets/imgs/back.png" alt="" />
+              <img src="../assets/imgs/back.png"
+                   alt="" />
             </div>
             <p class="card-front-number">PH值->200</p>
             <p class="card-front-number">sss级</p>
@@ -217,6 +335,8 @@ import Simplebar from 'simplebar-vue'
 import 'simplebar-vue/dist/simplebar.min.css'
 
 import { getCardData, getRandomArray } from '@/lib/handleDate'
+
+// import SqlData from '@/lib/sqlData'
 
 defineProps<{
   msg: string
@@ -299,7 +419,9 @@ onBeforeMount(() => {
   })
 })
 
-onMounted(() => {})
+onMounted(() => {
+  // const ggh = new SqlData()
+})
 </script>
 
 
@@ -312,19 +434,30 @@ onMounted(() => {})
   overflow: hidden;
   .mh-header {
     height: 15%;
-    padding: 0.2rem;
+    // padding: 0.2rem;
     /* background-color: red; */
     border-bottom: 0.01rem dashed #9e9d9dd2;
     .mh-title {
+      height: 100%;
       font-size: 0.6rem;
       text-align: center;
       color: #000000;
       letter-spacing: 0.05rem;
       font-family: 'YunFengFeiYunTi' !important;
       p {
+        height: 50%;
+        line-height: 2;
+        // line-height: 100%;
+        &:nth-of-type(1) {
+        }
         &:nth-of-type(2) {
           font-size: 0.4rem;
-          color: #9a0101;
+          color: #ff0000bf;
+        }
+        b {
+          color: black !important;
+          font-size: 0.5rem;
+          font-style: italic;
         }
       }
     }
@@ -337,7 +470,6 @@ onMounted(() => {})
     background: rgba(255, 255, 255, 0.082);
     .mh-tap {
       height: 10%;
-
       // background: chartreuse;
       box-shadow: 5px 5px 5px 5px rgba(66, 31, 5, 0.521);
 
@@ -352,13 +484,13 @@ onMounted(() => {})
           border: none;
           cursor: pointer;
           border-radius: 0.03rem;
-          padding: 0.1rem 0.25rem;
-          margin: 0 1rem;
+          padding: 0.6vw 2vh;
+          margin: 0 3vw;
           color: #fff;
           font-size: 0.2rem;
-          background-color: #000201;
+          background-color: #3f4022;
           &:hover {
-            background-color: #069469;
+            background-color: #0a6e10d6;
           }
         }
       }
@@ -387,26 +519,31 @@ onMounted(() => {})
     }
     &-left {
       color: #fff;
-      font-size: 0.3rem;
+      font-size: 0.35rem;
       box-shadow: inset 0px 0px 23px rgba(0, 0, 0, 0.3);
       // background: #56ec38;
       text-align: center;
-      padding-top: 0.1rem;
       h1 {
+        height: 10%;
+        line-height: 2;
         color: #000000;
-        font-size: 0.35rem;
+        box-shadow: 5px 5px 5px 5px rgba(66, 31, 5, 0.521);
         // font-weight: bolder;
+        background: #ff0000bf;
         font-family: 'YunFengFeiYunTi';
       }
       h5 {
+        font-size: 0.22rem;
         word-wrap: break-all;
         text-align: left;
         //  color: #d6ba2a;
         font-weight: bolder;
-        line-height: 2;
+        line-height: 3.4vh;
+        padding: 0.1rem;
         //  font-family: "YunFengFeiYunTi";
       }
       .left-table {
+        background: #108961bf;
         margin: 0.1rem;
         .title {
           background: #fff;
@@ -416,11 +553,18 @@ onMounted(() => {})
         ul {
           li {
             display: flex;
+
             justify-content: space-around;
             border: 1px solid #fff;
+            p {
+              &:nth-of-type(2) {
+                font-weight: bold;
+                color: #000;
+              }
+            }
             div {
               width: 50%;
-              font-size: 0.25rem;
+              font-size: 0.22rem;
               font-family: 'NSimSun';
               &:nth-of-type(2) {
                 border-left: 1px solid #ffffff;
@@ -431,20 +575,26 @@ onMounted(() => {})
       }
     }
     &-right {
-      padding-top: 0.1rem;
       color: #fff;
       font-size: 0.35rem;
       box-shadow: inset 0px 0px 23px rgba(0, 0, 0, 0.3);
       // background: #2624a7;
       text-align: center;
       h1 {
+        box-shadow: 5px 5px 5px 5px rgba(66, 31, 5, 0.521);
+        height: 10%;
+        line-height: 2;
         color: #000000;
+        background: #ff0000bf;
         // font-weight: bolder;
         font-family: 'YunFengFeiYunTi';
       }
-      h6{
-        line-height: 2.0;
+      h6 {
+        line-height: 2;
       }
+      // h6 {
+      //   line-height: 3.4vh;
+      // }
     }
   }
   .mh-footer {
@@ -453,19 +603,21 @@ onMounted(() => {})
     grid-template-columns: 10% 80% 10%;
     &-title {
       // writing-mode: vertical-lr;
-      background: rgba(0, 0, 0, 0.411);
+      // background: rgba(0, 0, 0, 0.411);
+      background: #c26d22a1;
       border-right: 0.03rem dashed #ffffff73;
-      color: #fff;
+      // color: #fff;
+      color: #000000;
       font-size: 0.15rem;
       display: flex;
       height: 100%;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      h1{
-         font-family: 'YunFengFeiYunTi';
+      h1 {
+        font-family: 'YunFengFeiYunTi';
         //  color: #000000;
-         margin-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
       }
       div {
         cursor: pointer;
@@ -509,7 +661,8 @@ onMounted(() => {})
       }
     }
     &-ph {
-      background: rgba(0, 0, 0, 0.411);
+      // background: rgba(0, 0, 0, 0.411);
+      background: #c26d22a1;
       border-left: 0.03rem dashed #ffffff73;
       color: #fff;
       font-size: 0.15rem;
@@ -523,12 +676,13 @@ onMounted(() => {})
         font-weight: bold;
         font-size: 0.2rem;
         margin: 0.3rem 0.1rem;
-        b{
+        b {
           font-size: 0.3rem;
-          color: #9a0101;
+          color: #000000;
+          font-weight: bold;
+          font-family: 'YunFengFeiYunTi';
         }
         &:nth-of-type(2) {
-          
         }
       }
     }
@@ -540,7 +694,8 @@ onMounted(() => {})
   user-select: none;
   box-sizing: border-box;
   font-size: 0.4rem;
-  color: white; /* 文字颜色 */
+  color: #000000; /* 文字颜色 */
+  font-weight: bold;
   text-shadow: -1px -1px 0 #000000, /* 左上角的阴影 */ 1px -1px 0 #000000,
     /* 右上角的阴影 */ -1px 1px 0 #000000, /* 左下角的阴影 */ 1px 1px 0 #000000,
     /* 右下角的阴影 */ 0 -2px 5px rgba(0, 0, 0, 0.5),

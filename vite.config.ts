@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    port: 10002,
+    port: 8880,
     host: '0.0.0.0',
     cors: true, //为开发服务器配置 CORS , 默认启用并允许任何源
     open: true, //是否自动打开浏览器

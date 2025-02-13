@@ -84,48 +84,57 @@
       <div style="height: 100%; overflow: auto">
         <div class="mh-tap">
           <div class="btnBox">
-            <button class="mh-tap-btn"
-                    :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
-                    @click="changeTap(1)">
+            <button
+              class="mh-tap-btn"
+              :style="{ backgroundColor: tapId === 1 ? '#0b412d' : '' }"
+              @click="changeTap(1)"
+            >
               全部卡池 【 {{ cardData.length }} 】
             </button>
-            <button class="mh-tap-btn"
-                    :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
-                    @click="changeTap(2)">
+            <button
+              class="mh-tap-btn"
+              :style="{ backgroundColor: tapId === 2 ? '#0b412d' : '' }"
+              @click="changeTap(2)"
+            >
               已选卡池 【 {{ flipedCardData.length }} 】
             </button>
-            <button class="mh-tap-btn"
-                    :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
-                    @click="changeTap(3)">
+            <button
+              class="mh-tap-btn"
+              :style="{ backgroundColor: tapId === 3 ? '#0b412d' : '' }"
+              @click="changeTap(3)"
+            >
               剩余卡池 【 {{ remainingCardData.length }} 】
             </button>
           </div>
         </div>
         <Simplebar class="center">
-          <div class="card-container"
-               v-show="tapId === 1">
-            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
-                 @click="chooseCard(cardItem)"
-                 v-for="(cardItem, index) in cardData"
-                 :key="cardItem.id">
+          <div class="card-container" v-show="tapId === 1">
+            <div
+              :class="['card', cardItem?.state ? 'isFlip' : '']"
+              @click="chooseCard(cardItem)"
+              v-for="(cardItem, index) in cardData"
+              :key="cardItem.id"
+            >
               卡牌{{ cardItem?.index }}
             </div>
           </div>
-          <div class="card-container"
-               v-show="tapId === 3">
-            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
-                 @click="chooseCard(cardItem)"
-                 v-for="(cardItem, index) in remainingCardData"
-                 :key="cardItem.id">
+          <div class="card-container" v-show="tapId === 3">
+            <div
+              :class="['card', cardItem?.state ? 'isFlip' : '']"
+              @click="chooseCard(cardItem)"
+              v-for="(cardItem, index) in remainingCardData"
+              :key="cardItem.id"
+            >
               卡牌{{ cardItem?.index }}
             </div>
           </div>
-          <div class="card-container"
-               v-show="tapId === 2">
-            <div :class="['card', cardItem?.state ? 'isFlip' : '']"
-                 @click="chooseCard(cardItem)"
-                 v-for="(cardItem, index) in flipedCardData"
-                 :key="cardItem.id">
+          <div class="card-container" v-show="tapId === 2">
+            <div
+              :class="['card', cardItem?.state ? 'isFlip' : '']"
+              @click="chooseCard(cardItem)"
+              v-for="(cardItem, index) in flipedCardData"
+              :key="cardItem.id"
+            >
               卡牌{{ cardItem?.index }}
             </div>
           </div>
@@ -135,125 +144,76 @@
         <h1>器材安排</h1>
         <div>
           <table>
-            <tr>
-              <th rowspan="1">SSS级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <th rowspan="2">SS级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <th rowspan="2">S级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <th rowspan="3">A级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <th rowspan="3">B级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <th rowspan="3">C级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <th rowspan="2">D级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
+            <tbody>
+              <tr>
+                <th rowspan="1">SSS级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <th rowspan="2">SS级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <th rowspan="2">S级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <th rowspan="3">A级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <th rowspan="3">B级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <th rowspan="3">C级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <th rowspan="2">D级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
 
-            <tr>
-              <th rowspan="3">F级</th>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
-            <tr>
-              <td>野豹G2</td>
-            </tr>
+              <tr>
+                <th rowspan="3">F级</th>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+              <tr>
+                <td>野豹G2</td>
+              </tr>
+            </tbody>
           </table>
         </div>
-        <!-- <ul>
-
-          <li>
-            <div>
-              ss
-
-            </div>
-            <div>
-              <p>S</p>
-              <p>2%</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <p>A</p>
-              <p>2%</p>
-            </div>
-            <div>
-              <p>B</p>
-              <p>2%</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <p>C</p>
-              <p>2%</p>
-            </div>
-            <div>
-              <p>D</p>
-              <p>2%</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <p>E</p>
-              <p>2%</p>
-            </div>
-            <div>
-              <p>F</p>
-              <p>2%</p>
-            </div>
-          </li>
-        </ul> -->
-        <!-- <h6>sss级--野豹G5*3</h6>
-        <h6>ss级--天宫墨子*3</h6>
-        <h6>s级--南匠致远*3</h6>
-        <h6>A级--南匠致远*3</h6>
-        <h6>B级--南匠致远*3</h6>
-        <h6>c级--南匠致远*3</h6>
-        <h6>D级--南匠致远*3</h6>
-        <h6>E级--南匠致远*3</h6> -->
       </aside>
     </article>
     <footer class="mh-footer">
@@ -263,12 +223,14 @@
       </div>
       <center style="width: 100%">
         <div class="mh-footer-container">
-          <div class="flipped-card"
-               v-for="(flipedCardItem, index) in currentFlipedCardData"
-               :key="flipedCardItem.id">
+          <div
+            class="flipped-card"
+            v-for="(flipedCardItem, index) in currentFlipedCardData"
+            :key="flipedCardItem.id"
+          >
             <span> 卡牌{{ flipedCardItem?.index }} </span>
             <span>{{ flipedCardItem.prizeName }}</span>
-            <span style="color: red"> 100PH值 </span>
+            <span style="color: #000"> 100PH值 </span>
           </div>
         </div>
       </center>
@@ -281,47 +243,42 @@
     </footer>
   </div>
   <!-- 遮罩 -->
-  <div class="mask-box"
-       v-if="cardName">
+  <div class="mask-box" v-if="cardName">
     <!-- 二次确认 -->
-    <div class="mask-box-content"
-         v-if="!isFlipCard">
+    <div class="mask-box-content" v-if="!isFlipCard">
       <h1>
         是否打开 <span class="card-number">{{ cardName }}号</span> 卡牌
       </h1>
       <div class="mask-box-content-btn">
-        <span class="btn-confirm"
-              @click="onConfirm">确认</span>
+        <span class="btn-confirm" @click="onConfirm">确认</span>
         &emsp;
-        <span class="btn-cancel"
-              @click="onCancel">取消</span>
+        <span class="btn-cancel" @click="onCancel">取消</span>
       </div>
     </div>
     <!-- 翻牌 -->
-    <div class="card-box"
-         v-if="isFlipCard"
-         @click.stop="flipCard()">
+    <div class="card-box" v-if="isFlipCard" @click.stop="flipCard()">
       <div class="centerBox">
-        <div class="close-btn"
-             @click.stop="closeBox">×</div>
+        <div class="close-btn" @click.stop="closeBox">×</div>
         <div class="title">光感台球器材评分收藏卡</div>
         <div :class="['card-inner', currentCardData?.state ? 'flipped' : '']">
           <div class="card-front">
             <!-- <img src="@/assets/imgs/front.png"
                alt="Card Back"> -->
             <p class="card-front-number">{{ currentCardData?.index }}号</p>
-            <p class="card-front-number">请翻开卡片</p>
+            <!-- <p class="card-front-number">请翻开卡片</p> -->
           </div>
           <div class="card-back">
             <!-- <img src="./assets/imgs/back.png" alt="Card Front"> -->
-            <p class="card-front-number">{{ currentCardData?.prizeName }}</p>
+            <p class="card-back-number1">
+              PH值
+              <b>6000</b>
+            </p>
+
             <div class="imgBox">
-              <img src="../assets/imgs/back.png"
-                   alt="" />
+              <img src="../assets/imgs/gg.jpg" alt="" />
             </div>
-            <p class="card-front-number">PH值->200</p>
-            <p class="card-front-number">sss级</p>
-            <p class="card-front-number">野豹G5</p>
+            <p class="card-back-number1">---&nbsp;{{ currentCardData?.prizeName }}&nbsp;---</p>
+            <p class="card-back-number1">SSS级</p>
           </div>
         </div>
       </div>
@@ -533,7 +490,7 @@ onMounted(() => {
         font-family: 'YunFengFeiYunTi';
       }
       h5 {
-        font-size: 0.22rem;
+        font-size: 0.2rem;
         word-wrap: break-all;
         text-align: left;
         //  color: #d6ba2a;
@@ -589,6 +546,36 @@ onMounted(() => {
         // font-weight: bolder;
         font-family: 'YunFengFeiYunTi';
       }
+      div {
+        height: 90%;
+        // overflow: hidden;
+        // overflow-y: scroll;
+        table {
+          // display: block;
+          height: 100%;
+          width: 100%;
+          border-collapse: collapse;
+          color: black;
+          border-spacing: 2rem;
+          tr {
+            border: 2px solid #ff0000bf;
+            th {
+              color: #000;
+              width: 40%;
+              font-size: 0.28rem;
+              font-weight: 900;
+            }
+
+            td {
+              // padding: 0.01rem;
+              font-weight: 900;
+              color: blanchedalmond;
+              font-size: 0.2rem !important;
+              border: 2px solid #ff0000bf;
+            }
+          }
+        }
+      }
       h6 {
         line-height: 2;
       }
@@ -617,22 +604,26 @@ onMounted(() => {
       h1 {
         font-family: 'YunFengFeiYunTi';
         //  color: #000000;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
       }
       div {
         cursor: pointer;
         padding: 0.1rem 0.3rem;
         border-radius: 0.05rem;
-        background: #5c9be4;
+        background: #3f598d;
+        color: white;
+        font-weight: 700;
       }
     }
     &-container {
-      display: inline-flex;
-      // justify-content: start;
-      align-items: center;
-      flex-direction: row;
-      display: inline-flex;
+      // display: inline-flex;
+      // // justify-content: start;
+      // align-items: center;
+      // flex-direction: row;
+      margin-top: 0.1rem;
       justify-content: center;
+      display: inline-flex;
+      
       width: 100%;
       height: 100%;
       .flipped-card {
@@ -642,21 +633,22 @@ onMounted(() => {
         font-size: 0.16rem;
         color: white; /* 文字颜色 */
         width: 1rem;
-        height: 80%;
-        background-color: #f0f0f0;
+        height: 75%;
+        background-color: #3f598d;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-around;
         flex-direction: column;
         // border: 1px solid #ccc;
         border-radius: 0.1rem;
-        background: url(/src/assets/imgs/1.png) no-repeat center center;
+        background: #3f598d;
+        // background: url(/src/assets/imgs/1.png) no-repeat center center;
         // box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
         // background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
         span {
           font-size: 0.2rem;
           margin: 0.04rem 0;
-          font-weight: bold;
+          font-weight: 700;
         }
       }
     }
@@ -694,7 +686,8 @@ onMounted(() => {
   user-select: none;
   box-sizing: border-box;
   font-size: 0.4rem;
-  color: #000000; /* 文字颜色 */
+  // color: #000000; /* 文字颜色 */
+  color: #fff;
   font-weight: bold;
   text-shadow: -1px -1px 0 #000000, /* 左上角的阴影 */ 1px -1px 0 #000000,
     /* 右上角的阴影 */ -1px 1px 0 #000000, /* 左下角的阴影 */ 1px 1px 0 #000000,
@@ -711,7 +704,8 @@ onMounted(() => {
   justify-content: center;
   // border: 1px solid #ccc;
   border-radius: 0.1rem;
-  background: url(/src/assets/imgs/2.png) no-repeat center center;
+  background-image: url(/src/assets/imgs/33.jpg);
+  background-size: 100% 100%;
   // background-image: "../../src/assets/imgs/2.png";
   // box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.3);
   // background-image: radial-gradient(circle at center, #186143 0%, #05442d 100%);
@@ -724,7 +718,7 @@ onMounted(() => {
 
 .isFlip {
   //
-  filter: grayscale(0.1);
+  filter: grayscale(100);
   pointer-events: none;
 }
 
@@ -774,6 +768,7 @@ onMounted(() => {
       }
     }
   }
+  // 弹框卡片
   .card-box {
     position: absolute;
     top: 50%;
@@ -781,20 +776,21 @@ onMounted(() => {
     transform: translate(-50%, -50%);
     width: 4rem;
     height: 6rem;
-    border: 2px solid hsl(207, 96%, 50%);
+    border: 2px solid #8c9296;
     border-radius: 0.1rem;
+    overflow: hidden;
     .centerBox {
       width: 100%;
       height: 100%;
-
       .title {
         height: 0.5rem;
+        font-size: 0.25rem;
         font-weight: bold;
         text-align: center;
         line-height: 0.5rem;
-        background: hsla(194, 100%, 50%, 0.315);
+        background: #00000096;
         color: white;
-        border-bottom: 2px solid hsl(194, 100%, 50%);
+        // border-bottom: 2px solid hsl(194, 100%, 50%);
       }
       .close-btn {
         cursor: pointer;
@@ -807,10 +803,10 @@ onMounted(() => {
         top: 0rem;
       }
       .card-inner {
-        width: calc(100% - 0.2rem);
-        height: calc(100% - 0.7rem);
-        margin-top: 0.1rem;
-        margin: 0.1rem;
+        width: calc(100% - 0rem);
+        height: calc(100% - 0.5rem);
+        // margin-top: 0.1rem;
+        // margin: 0.1rem;
         position: relative;
         transform-style: preserve-3d;
         transition: transform 0.6s;
@@ -823,7 +819,7 @@ onMounted(() => {
           // display: flex;
           justify-items: center;
           // align-items: center;
-          border-radius: 10px;
+
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
           img {
             max-width: 100%;
@@ -833,23 +829,25 @@ onMounted(() => {
         }
         .card-front {
           p {
-            display: inline-block;
+            // display: inline-block;
+            text-align: center;
           }
         }
 
         .card-front {
-          display: flex;
-          justify-content: center;
+          // display: flex;
+          // justify-content: center;
           // background-color: #fff;
-          background: url(/src/assets/imgs/1.png) no-repeat center center;
+          background: url(/src/assets/imgs/333.jpg) no-repeat center center;
 
           // background: url('@/assets/imgs/b.jpg') no-repeat center;
           background-size: 100% 100%;
 
           &-number {
-            // margin-top: 0.4rem;
-            font-size: 0.5rem;
-            color: #fff;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            font-weight: 900;
+            color: #000000;
           }
         }
 
@@ -857,13 +855,45 @@ onMounted(() => {
           width: 100%;
           text-align: center;
           // background: url('@/assets/imgs/f.jpg') no-repeat center;
-          background: #186143;
+          background: #811515e6;
           background-size: 100% 100%;
           // background-image: radial-gradient(circle at center, #186143 0%, #0e543c 100%);
           transform: rotateY(180deg);
-          .imgBox {
+          &-number1 {
+            font-weight: 700;
             width: 100%;
-            height: 50%;
+            color: #fff;
+            margin-top: 0.2rem;
+            &:nth-of-type(1) {
+              text-align: right;
+              margin: 0.2rem 0;
+              padding-right: 0.25rem;
+              b{
+                font-weight: 900;
+                font-size: 0.2rem;
+              }
+            }
+             &:nth-of-type(2) {
+               margin-top: 0.4rem;
+               font-size: 0.35rem;
+               font-weight: 700;
+              font-family: "NSimSun";
+            }
+            &:nth-of-type(3){
+                font-size: 0.25rem;
+                font-family: "NSimSun";
+            }
+          }
+          .imgBox {
+            border-radius: 0.25rem;
+            overflow: hidden;
+            border: 2px solid #000000;
+            width: 85%;
+            height: 55%;
+            img {
+              width: 100%;
+              height: 100%;
+            }
             // background: url('../assets/imgs/back.png') no-repeat center center;
             // background: #069469;
           }
